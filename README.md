@@ -1,4 +1,6 @@
-# TestAngular
+# Angular Training
+
+Tour of heroes with french comments fot training Angular.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.6.
 
