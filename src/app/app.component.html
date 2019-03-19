@@ -1,1 +1,7 @@
+<!-- ETAPE 2 -->
+<!-- Pour afficher le composant HeroesComponent, vous devez l'ajouter au modèle du shell AppComponent.
+N'oubliez pas que app-heroes est le sélecteur d'élément du composant HeroesComponent.
+Ajoutez donc un élément <app-heroes> au fichier de modèle AppComponent, juste en dessous du titre. -->
 <h1>{{ title }}</h1>
+<app-heroes></app-heroes>
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>

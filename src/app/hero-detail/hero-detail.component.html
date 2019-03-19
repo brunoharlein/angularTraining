@@ -1,0 +1,30 @@
+<!-- Lorsque l'application démarre, selectedHero n'est pas défini par sa conception.
+Les expressions de liaison dans le modèle qui font référence aux propriétés
+de selectedHero - des expressions telles que {{selectedHero.name}} - doivent échouer
+car il n'y a pas de héros sélectionné.
+Le correctif
+Le composant ne doit afficher les détails du héros sélectionné que si le héros sélectionné existe.
+Enveloppez le code HTML de détail du héros dans un <div>.
+Ajoutez la directive * ngIf de Angular au <div> et définissez-la sur selectedHero. -->
+
+
+<!-- ETAPE 20
+Coupez le code HTML du détail du héros à partir du bas du modèle HeroesComponent
+et collez-le sur le passe-partout généré dans le modèle HeroDetailComponent.
+Le HTML collé fait référence à un selectedHero. Le nouveau HeroDetailComponent
+peut présenter n'importe quel héros, pas seulement un héros sélectionné.
+Donc, remplacez "selectedHero" par "hero" partout dans le modèle. -->
+
+<div *ngIf="hero">
+  <!-- fichier avant dans heroes.component.html -->
+  <!-- Le modèle fait toujours référence à l'ancienne propriété de héros
+   du composant, qui n'existe plus. Renommez le héros à selectedHero. -->
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{hero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="hero.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div>

@@ -1,0 +1,81 @@
+<!-- ETAPE 6 -->
+<!-- remplacez-le par une liaison de données à la nouvelle propriété hero. -->
+
+
+<!-- ETAPE 12
+Ouvrez le fichier de modèle HeroesComponent et apportez les modifications suivantes:
+Ajoutez un <h2> en haut,
+En dessous, ajouter une liste non ordonnée HTML (<ul>)
+Insérez un <li> dans le <ul> qui affiche les propriétés d'un héros. -->
+<h2>My Heroes</h2>
+<ul class="heroes">
+  <!----------------------------------- ETAPE 13 -->
+  <!-- boucle sur le tableau heroes et il crée un hero à chaque tour de boucle  -->
+<!-- Le * ngFor est la directive de répéteur d'Angular. Il répète l'élément hôte pour chaque élément d'une liste.
+Dans cet exemple
+<li> est l'élément hôte
+heroes est la liste de la classe HeroesComponent.
+hero détient l'objet héros actuel pour chaque itération de la liste. -->
+<!-- FIN ETATPE 13 -->
+
+<!-- ETAPE 14 -->
+<!-- Les parenthèses entourant click indiquent à Angular d'écouter l'événement
+ de clic de l'élément <li>. Lorsque l'utilisateur clique sur <li>, Angular exécute l'expression
+onSelect (héros).
+onSelect () est une méthode de HeroesComponent que vous êtes sur le point d'écrire.
+Angular l'appelle avec l'objet héros affiché dans le <li> cliqué,
+le même héros défini précédemment dans l'expression * ngFor.
+FIN ETAPE 14 -->
+  <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero" (click)="onSelect(hero)">
+    <span class="badge">{{hero.id}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<!-- La coloration de héros sélectionnée correspond au travail de la classe CSS
+sélectionnée dans les styles que vous avez ajoutés précédemment.
+Vous devez simplement appliquer la classe .selected au <li> lorsque l'utilisateur clique dessus.
+La liaison de classe angulaire facilite l'ajout et la suppression
+conditionnelle d'une classe CSS. Ajoutez simplement
+[class.some-css-class] = "une condition" à l'élément que vous souhaitez styler.
+Ajoutez la liaison [class.selected] suivante au <li> dans le modèle HeroesComponent: -->
+
+
+<!-- ETAPE 7 -->
+<!-- Mettez à jour la liaison dans le modèle pour annoncer le nom du héros
+et afficher à la fois l'ID et le nom dans une présentation détaillée comme celle-ci: -->
+
+<!-- <h2>{{hero.name | uppercase}} Details</h2>
+Le navigateur s'actualise et le nom du héros est maintenant affiché en majuscules.
+Le mot majuscule dans la liaison d'interpolation, juste après l'opérateur de canal (|),
+ active l'UppercasePipe intégré.
+<div><span>id: </span>{{hero.id}}</div>
+<div><span>name: </span>{{hero.name}}</div> -->
+<!-- FIN ETAPE 7 -->
+
+
+<!-- ETAPE 8 -->
+<!-- Les utilisateurs devraient pouvoir modifier le nom du héros dans une zone de texte <input>.
+La zone de texte doit à la fois afficher la propriété du nom du héros
+et la mettre à jour à mesure que l'utilisateur le tape.
+Cela signifie que le flux de données de la classe de composant à l’écran et de l’écran à la classe.
+Pour automatiser ce flux de données, configurez une liaison de données bidirectionnelle
+entre l'élément de formulaire <input> et la propriété hero.name. -->
+  <!-- <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name" />
+    </label>
+  </div> -->
+  <!-- FIN ETAPE 8 -->
+
+
+
+<!-- ETAPE 20
+[hero] = "selectedHero" est une liaison de propriété angulaire.
+Il s'agit d'une liaison de données à sens unique de la propriété
+selectedHero de HeroesComponent à la propriété hero de l'élément cible,
+qui mappe à la propriété hero de HeroDetailComponent.
+Désormais, lorsque l’utilisateur clique sur un héros de la liste,
+l’élément sélectionné est modifié. Lorsque le selectedHero change,
+la liaison de propriété met à jour le héros et le HeroDetailComponent affiche le nouveau héros. -->
+
+<app-hero-detail [hero]="selectedHero"></app-hero-detail>
